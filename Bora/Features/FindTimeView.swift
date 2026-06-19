@@ -14,7 +14,8 @@ struct FindTimeView: View {
             let window = Availability.dayWindow(for: day)
             let slots = Availability.commonFreeSlots(in: window,
                                                      me: calendar.busy(on: day),
-                                                     friends: app.selectedFriends)
+                                                     friends: app.selectedFriends,
+                                                     minDuration: app.minDuration)
             return slots.isEmpty ? nil : (day, slots)
         }
     }
@@ -24,6 +25,7 @@ struct FindTimeView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: Theme.Spacing.lg) {
                     friendSelector
+                    DurationPicker(selection: $app.minMeetMinutes)
 
                     if app.selectedFriends.isEmpty {
                         Card {

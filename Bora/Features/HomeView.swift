@@ -19,7 +19,8 @@ struct HomeView: View {
     private var commonSlots: [FreeSlot] {
         Availability.commonFreeSlots(in: window,
                                      me: calendar.busy(on: selectedDay),
-                                     friends: app.selectedFriends)
+                                     friends: app.selectedFriends,
+                                     minDuration: app.minDuration)
     }
 
     var body: some View {

@@ -12,6 +12,12 @@ final class AppModel: ObservableObject {
     @Published var isLive = false
     @Published var lastSyncError: String?
 
+    /// Minimum length a "free together" window must have to be shown.
+    @Published var minMeetMinutes = 60
+    /// Preset durations offered in the picker (minutes).
+    static let durationPresets = [30, 45, 60, 90, 120, 180]
+    var minDuration: TimeInterval { TimeInterval(minMeetMinutes * 60) }
+
     private let sync = SyncService()
 
     init(friends: [Friend] = MockData.sampleFriends()) {
