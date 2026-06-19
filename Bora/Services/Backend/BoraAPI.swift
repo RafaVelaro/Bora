@@ -98,6 +98,27 @@ final class BoraAPI {
         store(token)
     }
 
+    // MARK: Auth — email + password (temporary login for testing the backend)
+
+    /// Create a new account. With "Confirm email" disabled, this returns a
+    /// session immediately.
+    func signUpWithPassword(email: String, password: String) async throws {
+        let url = try base().appendingPathComponent("auth/v1/signup")
+        let body = try JSONSerialization.data(withJSONObject: ["email": email, "password": password])
+        let data = try await send(url, method: "POST", body: body, authed: false)
+        store(try JSONDecoder().decode(TokenResponse.self, from: data))
+    }
+
+    /// Sign in with email + password.
+    func signInWithPassword(email: String, password: String) async throws {
+        var comps = URLComponents(url: try base().appendingPathComponent("auth/v1/token"),
+                                  resolvingAgainstBaseURL: false)!
+        comps.queryItems = [URLQueryItem(name: "grant_type", value: "password")]
+        let body = try JSONSerialization.data(withJSONObject: ["email": email, "password": password])
+        let data = try await send(comps.url!, method: "POST", body: body, authed: false)
+        store(try JSONDecoder().decode(TokenResponse.self, from: data))
+    }
+
     // MARK: PostgREST
 
     /// GET rows from a table, decoding into `[T]`.

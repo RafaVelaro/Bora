@@ -1,72 +1,49 @@
 import Foundation
 import SwiftUI
 
-/// Drives the email one-time-code sign-in flow and exposes auth state to the UI.
+/// Drives sign-in. Temporary email + password flow so we can test the live
+/// backend on the free tier (no custom SMTP yet). Will be swapped for real
+/// magic-link / Sign-in-with-Apple auth before launch.
 @MainActor
 final class AuthModel: ObservableObject {
-    enum Step: Equatable {
-        case email      // entering email address
-        case code       // entering the 6-digit code
-        case signedIn
-    }
-
-    @Published var step: Step
     @Published var email = ""
-    @Published var code = ""
+    @Published var password = ""
     @Published var isWorking = false
     @Published var errorMessage: String?
+    @Published var signedIn: Bool
 
     private let api = BoraAPI.shared
 
-    init() {
-        step = api.isSignedIn ? .signedIn : .email
-    }
+    init() { signedIn = api.isSignedIn }
 
-    var isSignedIn: Bool { step == .signedIn }
+    var isSignedIn: Bool { signedIn }
 
-    func sendCode() async {
-        let trimmed = email.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard trimmed.contains("@") else {
-            errorMessage = "Enter a valid email address."
+    /// Sign in — creating the account first if it doesn't exist yet.
+    func submit() async {
+        let mail = email.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard mail.contains("@"), password.count >= 6 else {
+            errorMessage = "Enter an email and a password of at least 6 characters."
             return
         }
         isWorking = true; errorMessage = nil
         defer { isWorking = false }
         do {
-            try await api.sendEmailCode(trimmed)
-            email = trimmed
-            step = .code
+            do {
+                try await api.signInWithPassword(email: mail, password: password)
+            } catch {
+                // No account yet (or wrong password) — try to create it.
+                try await api.signUpWithPassword(email: mail, password: password)
+            }
+            signedIn = api.isSignedIn
+            if !signedIn { errorMessage = "Could not sign in. Check your details." }
         } catch {
             errorMessage = error.localizedDescription
         }
-    }
-
-    func verify() async {
-        let trimmed = code.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmed.isEmpty else {
-            errorMessage = "Enter the code from your email."
-            return
-        }
-        isWorking = true; errorMessage = nil
-        defer { isWorking = false }
-        do {
-            try await api.verifyEmailCode(email: email, code: trimmed)
-            code = ""
-            step = .signedIn
-        } catch {
-            errorMessage = error.localizedDescription
-        }
-    }
-
-    func startOver() {
-        code = ""
-        errorMessage = nil
-        step = .email
     }
 
     func signOut() {
         api.signOut()
-        email = ""; code = ""
-        step = .email
+        email = ""; password = ""
+        signedIn = false
     }
 }
