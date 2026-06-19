@@ -4,6 +4,7 @@ import SwiftUI
 /// value (your real availability) is set up before anything else.
 struct RootTabView: View {
     @EnvironmentObject private var calendar: CalendarStore
+    @State private var selection = 0
 
     var body: some View {
         Group {
@@ -24,12 +25,15 @@ struct RootTabView: View {
     }
 
     private var tabs: some View {
-        TabView {
+        TabView(selection: $selection) {
             HomeView()
+                .tag(0)
                 .tabItem { Label("Today", systemImage: "calendar") }
             FindTimeView()
+                .tag(1)
                 .tabItem { Label("Find Time", systemImage: "sparkles") }
             FriendsView()
+                .tag(2)
                 .tabItem { Label("Friends", systemImage: "person.2") }
         }
     }
