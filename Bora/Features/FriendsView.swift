@@ -12,16 +12,25 @@ struct FriendsView: View {
                 LazyVStack(spacing: Theme.Spacing.md) {
                     inviteCard
 
-                    ForEach(app.friends) { friend in
-                        FriendRow(friend: friend,
-                                  tint: app.tint(for: friend),
-                                  isFreeNow: isFreeNow(friend))
+                    if app.friends.isEmpty {
+                        Card {
+                            EmptyStateView(systemImage: "person.2",
+                                           title: "No friends yet",
+                                           message: "Tap \u{201C}Invite a friend\u{201D} above to share your code, or enter a friend's code to connect.")
+                        }
+                    } else {
+                        ForEach(app.friends) { friend in
+                            FriendRow(friend: friend,
+                                      tint: app.tint(for: friend),
+                                      isFreeNow: isFreeNow(friend))
+                        }
                     }
                 }
                 .padding(Theme.Spacing.md)
             }
             .background(Theme.Palette.background.ignoresSafeArea())
             .navigationTitle("Friends")
+            .refreshable { await app.refreshFriends() }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
@@ -32,10 +41,8 @@ struct FriendsView: View {
                     .tint(Theme.Palette.primary)
                 }
             }
-            .alert("Invites coming soon", isPresented: $showingInvite) {
-                Button("OK", role: .cancel) { }
-            } message: {
-                Text("The next phase adds a share link so friends can join and sync their calendars.")
+            .sheet(isPresented: $showingInvite) {
+                InviteSheet()
             }
         }
     }
@@ -53,7 +60,7 @@ struct FriendsView: View {
                     Text("Invite your friends")
                         .font(.subheadline.weight(.semibold))
                         .foregroundStyle(Theme.Palette.ink)
-                    Text("Share a link — they join and sync in seconds.")
+                    Text("Share a code — or enter one to connect.")
                         .font(.footnote)
                         .foregroundStyle(Theme.Palette.inkSecondary)
                 }
