@@ -96,7 +96,47 @@ struct InviteDTO: Codable {
     }
 }
 
+/// A plan with its embedded participants (PostgREST nested select).
+struct PlanRow: Codable {
+    let id: String
+    let creatorId: String
+    let title: String
+    let startsAt: String
+    let endsAt: String
+    let participants: [Participant]
+
+    struct Participant: Codable {
+        let userId: String
+        let status: String
+        enum CodingKeys: String, CodingKey {
+            case userId = "user_id"
+            case status
+        }
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case id, title
+        case creatorId = "creator_id"
+        case startsAt = "starts_at"
+        case endsAt = "ends_at"
+        case participants = "plan_participants"
+    }
+}
+
 // MARK: - Insert payloads (omit server-managed columns)
+
+struct PlanInsert: Encodable {
+    let id: String
+    let creator_id: String
+    let title: String
+    let starts_at: String
+    let ends_at: String
+}
+
+struct PlanParticipantInsert: Encodable {
+    let plan_id: String
+    let user_id: String
+}
 
 struct BusyBlockInsert: Encodable {
     let user_id: String

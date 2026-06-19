@@ -18,6 +18,9 @@ final class AppModel: ObservableObject {
     static let durationPresets = [30, 45, 60, 90, 120, 180]
     var minDuration: TimeInterval { TimeInterval(minMeetMinutes * 60) }
 
+    /// Plans I created or was invited to.
+    @Published var plans: [Plan] = []
+
     private let sync = SyncService()
 
     init(friends: [Friend] = MockData.sampleFriends()) {
@@ -40,6 +43,7 @@ final class AppModel: ObservableObject {
         do {
             try await sync.pushMyBusy(myBusy, window: window)
             try await loadFriends(window: window)
+            await loadPlans()
             lastSyncError = nil
         } catch {
             lastSyncError = error.localizedDescription
@@ -76,6 +80,42 @@ final class AppModel: ObservableObject {
         guard !trimmed.isEmpty else { throw BoraError.server("Enter an invite code.") }
         try await sync.redeemInvite(token: trimmed)
         await refreshFriends()
+    }
+
+    // MARK: Plans
+
+    /// Propose a plan for the given window and guests, then refresh.
+    func createPlan(title: String, interval: DateInterval, guestIDs: [UUID]) async throws {
+        let name = title.trimmingCharacters(in: .whitespacesAndNewlines)
+        try await sync.createPlan(title: name.isEmpty ? "Get together" : name,
+                                  interval: interval, guestIDs: guestIDs)
+        await loadPlans()
+    }
+
+    func loadPlans() async {
+        guard BoraConfig.isConfigured, BoraAPI.shared.isSignedIn else { return }
+        let me = BoraAPI.shared.currentUserId
+        do {
+            let rows = try await sync.loadPlans()
+            plans = rows.compactMap { row in
+                guard let s = ISO.date(from: row.startsAt),
+                      let e = ISO.date(from: row.endsAt), e > s else { return nil }
+                return Plan(id: row.id,
+                            title: row.title,
+                            interval: DateInterval(start: s, end: e),
+                            creatorID: row.creatorId,
+                            guestIDs: row.participants.compactMap { UUID(uuidString: $0.userId) },
+                            isMine: row.creatorId == me)
+            }
+        } catch {
+            lastSyncError = error.localizedDescription
+        }
+    }
+
+    /// Display name for a user id (a friend, or "You").
+    func name(forUserID id: UUID) -> String {
+        if let me = BoraAPI.shared.currentUserId, UUID(uuidString: me) == id { return "You" }
+        return friends.first { $0.id == id }?.name ?? "A friend"
     }
 
     var selectedFriends: [Friend] {

@@ -5,6 +5,7 @@ import SwiftUI
 struct FindTimeView: View {
     @EnvironmentObject private var calendar: CalendarStore
     @EnvironmentObject private var app: AppModel
+    @State private var planningSlot: FreeSlot?
 
     private var days: [Date] { DateUtils.next(7) }
 
@@ -51,6 +52,9 @@ struct FindTimeView: View {
             }
             .background(Theme.Palette.background.ignoresSafeArea())
             .navigationTitle("Find Time")
+            .sheet(item: $planningSlot) { slot in
+                PlanSheet(interval: slot.interval, candidateIDs: Array(slot.participantIDs))
+            }
         }
     }
 
@@ -101,7 +105,7 @@ struct FindTimeView: View {
 
             VStack(spacing: Theme.Spacing.sm) {
                 ForEach(slots) { slot in
-                    SlotRow(slot: slot)
+                    SlotRow(slot: slot) { planningSlot = slot }
                 }
             }
             .padding(.horizontal, Theme.Spacing.md)
@@ -111,27 +115,33 @@ struct FindTimeView: View {
 
 private struct SlotRow: View {
     let slot: FreeSlot
+    let onPlan: () -> Void
 
     var body: some View {
-        Card {
-            HStack(spacing: Theme.Spacing.md) {
-                Image(systemName: "sun.max.fill")
-                    .foregroundStyle(Theme.Palette.primary)
-                    .frame(width: 36, height: 36)
-                    .background(Theme.Palette.primarySoft)
-                    .clipShape(Circle())
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(slot.interval.timeRangeLabel())
-                        .font(.body.weight(.semibold))
-                        .foregroundStyle(Theme.Palette.ink)
-                    Text("Everyone's free")
-                        .font(.footnote)
-                        .foregroundStyle(Theme.Palette.inkSecondary)
+        Button(action: onPlan) {
+            Card {
+                HStack(spacing: Theme.Spacing.md) {
+                    Image(systemName: "sun.max.fill")
+                        .foregroundStyle(Theme.Palette.primary)
+                        .frame(width: 36, height: 36)
+                        .background(Theme.Palette.primarySoft)
+                        .clipShape(Circle())
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(slot.interval.timeRangeLabel())
+                            .font(.body.weight(.semibold))
+                            .foregroundStyle(Theme.Palette.ink)
+                        Text("Tap to plan")
+                            .font(.footnote)
+                            .foregroundStyle(Theme.Palette.inkSecondary)
+                    }
+                    Spacer()
+                    TagPill(text: slot.duration.shortDuration,
+                            fg: Theme.Palette.mint, bg: Theme.Palette.mintSoft)
+                    Image(systemName: "calendar.badge.plus")
+                        .foregroundStyle(Theme.Palette.primary)
                 }
-                Spacer()
-                TagPill(text: slot.duration.shortDuration,
-                        fg: Theme.Palette.mint, bg: Theme.Palette.mintSoft)
             }
         }
+        .buttonStyle(.plain)
     }
 }

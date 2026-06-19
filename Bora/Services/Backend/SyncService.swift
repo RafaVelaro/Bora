@@ -89,4 +89,33 @@ final class SyncService {
     func redeemInvite(token: String) async throws {
         _ = try await api.rpc("redeem_invite", body: ["invite_token": token])
     }
+
+    // MARK: Plans
+
+    /// Create a plan for a chosen subset of friends. We generate the id
+    /// client-side so we don't need a representation read-back (which would hit
+    /// the SELECT policy mid-insert).
+    func createPlan(title: String, interval: DateInterval, guestIDs: [UUID]) async throws {
+        guard let me = api.currentUserId else { throw BoraError.notSignedIn }
+        let planID = UUID().uuidString.lowercased()
+        try await api.insert("plans", rows: [
+            PlanInsert(id: planID, creator_id: me, title: title,
+                       starts_at: ISO.string(from: interval.start),
+                       ends_at: ISO.string(from: interval.end))
+        ])
+        let rows = guestIDs.map {
+            PlanParticipantInsert(plan_id: planID, user_id: $0.uuidString.lowercased())
+        }
+        if !rows.isEmpty {
+            try await api.insert("plan_participants", rows: rows)
+        }
+    }
+
+    /// Load plans I can see (created by me or that I'm invited to), with guests.
+    func loadPlans() async throws -> [PlanRow] {
+        try await api.select("plans", query: [
+            URLQueryItem(name: "select", value: "id,creator_id,title,starts_at,ends_at,plan_participants(user_id,status)"),
+            URLQueryItem(name: "order", value: "starts_at")
+        ], as: PlanRow.self)
+    }
 }

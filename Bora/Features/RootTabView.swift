@@ -54,8 +54,11 @@ struct RootTabView: View {
             FindTimeView()
                 .tag(1)
                 .tabItem { Label("Find Time", systemImage: "sparkles") }
-            FriendsView()
+            PlansView()
                 .tag(2)
+                .tabItem { Label("Plans", systemImage: "calendar.badge.plus") }
+            FriendsView()
+                .tag(3)
                 .tabItem { Label("Friends", systemImage: "person.2") }
         }
     }

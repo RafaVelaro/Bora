@@ -29,6 +29,18 @@ struct MyAvailability {
     var busy: [DateInterval]
 }
 
+/// A get-together proposed for a chosen subset of friends.
+struct Plan: Identifiable, Hashable {
+    let id: String
+    var title: String
+    var interval: DateInterval
+    var creatorID: String
+    var guestIDs: [UUID]
+    var isMine: Bool
+
+    var start: Date { interval.start }
+}
+
 /// A window of free time, optionally shared by several people.
 struct FreeSlot: Identifiable, Hashable {
     let id = UUID()
