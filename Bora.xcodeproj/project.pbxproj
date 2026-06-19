@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		A100000000000000000001 /* Samen */ = {
+		A100000000000000000001 /* Bora */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Samen;
+			path = Bora;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFileReference section */
-		A100000000000000000002 /* Samen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Samen.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A100000000000000000002 /* Bora.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bora.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,7 +32,7 @@
 		A100000000000000000004 = {
 			isa = PBXGroup;
 			children = (
-				A100000000000000000001 /* Samen */,
+				A100000000000000000001 /* Bora */,
 				A100000000000000000005 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -40,7 +40,7 @@
 		A100000000000000000005 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A100000000000000000002 /* Samen.app */,
+				A100000000000000000002 /* Bora.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,9 +48,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A100000000000000000006 /* Samen */ = {
+		A100000000000000000006 /* Bora */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A100000000000000000007 /* Build configuration list for PBXNativeTarget "Samen" */;
+			buildConfigurationList = A100000000000000000007 /* Build configuration list for PBXNativeTarget "Bora" */;
 			buildPhases = (
 				A100000000000000000008 /* Sources */,
 				A100000000000000000003 /* Frameworks */,
@@ -61,11 +61,11 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				A100000000000000000001 /* Samen */,
+				A100000000000000000001 /* Bora */,
 			);
-			name = Samen;
-			productName = Samen;
-			productReference = A100000000000000000002 /* Samen.app */;
+			name = Bora;
+			productName = Bora;
+			productReference = A100000000000000000002 /* Bora.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -83,7 +83,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A10000000000000000000B /* Build configuration list for PBXProject "Samen" */;
+			buildConfigurationList = A10000000000000000000B /* Build configuration list for PBXProject "Bora" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -96,7 +96,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A100000000000000000006 /* Samen */,
+				A100000000000000000006 /* Bora */,
 			);
 		};
 /* End PBXProject section */
@@ -208,7 +208,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "Samen reads your busy times so you and your friends can see when everyone is free. Your event titles and details stay private.";
+				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "Bora reads your busy times so you and your friends can see when everyone is free. Your event titles and details stay private.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -220,7 +220,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.samen.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bora.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -237,7 +237,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "Samen reads your busy times so you and your friends can see when everyone is free. Your event titles and details stay private.";
+				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "Bora reads your busy times so you and your friends can see when everyone is free. Your event titles and details stay private.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -249,7 +249,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.samen.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bora.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -260,7 +260,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A10000000000000000000B /* Build configuration list for PBXProject "Samen" */ = {
+		A10000000000000000000B /* Build configuration list for PBXProject "Bora" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A10000000000000000000C /* Debug */,
@@ -269,7 +269,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A100000000000000000007 /* Build configuration list for PBXNativeTarget "Samen" */ = {
+		A100000000000000000007 /* Build configuration list for PBXNativeTarget "Bora" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A10000000000000000000E /* Debug */,

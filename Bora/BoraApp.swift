@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct SamenApp: App {
+struct BoraApp: App {
     @StateObject private var calendar = CalendarStore()
     @StateObject private var app = AppModel()
 

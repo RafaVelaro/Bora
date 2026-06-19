@@ -37,7 +37,7 @@ struct HomeView: View {
                 .padding(.vertical, Theme.Spacing.md)
             }
             .background(Theme.Palette.background.ignoresSafeArea())
-            .navigationTitle("Samen")
+            .navigationTitle("Bora")
             .navigationBarTitleDisplayMode(.inline)
         }
     }

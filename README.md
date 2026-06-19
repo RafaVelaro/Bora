@@ -1,4 +1,4 @@
-# Samen 🟠
+# Bora 🟠
 
 A clean, modern iOS app for planning time together with friends — built for the
 Netherlands' "let's-put-it-in-the-agenda" culture.
@@ -28,7 +28,7 @@ Friends are sample data (`MockData.swift`) until the sharing backend exists.
 
 ## Run it
 
-1. Open `Samen.xcodeproj` in Xcode.
+1. Open `Bora.xcodeproj` in Xcode.
 2. Select an iPhone simulator (e.g. iPhone 15).
 3. Press ⌘R.
 4. Tap **Connect my calendar** and allow access. Add some events in the
@@ -37,8 +37,8 @@ Friends are sample data (`MockData.swift`) until the sharing backend exists.
 ## Project layout
 
 ```
-Samen/
-├─ SamenApp.swift              App entry
+Bora/
+├─ BoraApp.swift               App entry
 ├─ DesignSystem/Theme.swift    Colors, spacing, cards, buttons
 ├─ Models/Models.swift         Friend, FreeSlot, MyAvailability
 ├─ Services/
@@ -63,6 +63,7 @@ Xcode (used for quick logic checks during development).
 
 ## Notes
 
-- Working name **"Samen"** (Dutch for "together") — easy to rename later.
-- Bundle id `com.samen.app` is a placeholder; change it for your Apple
+- Name **"Bora"** (Brazilian slang for "let's go!") — pending a pre-launch
+  trademark + domain check (e.g. `bora.app` / `getbora.app`).
+- Bundle id `com.bora.app` is a placeholder; change it for your Apple
   Developer account.

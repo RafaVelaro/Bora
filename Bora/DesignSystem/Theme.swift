@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Central design tokens for Samen — colors, typography, spacing, radii.
+/// Central design tokens for Bora — colors, typography, spacing, radii.
 /// Keeping these in one place makes it trivial to retune the look later.
 enum Theme {
 

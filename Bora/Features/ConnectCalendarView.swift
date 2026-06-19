@@ -23,7 +23,7 @@ struct ConnectCalendarView: View {
                     .multilineTextAlignment(.center)
                     .foregroundStyle(Theme.Palette.ink)
 
-                Text("Samen reads only your busy times to find when you and your friends are all free. Your event details always stay private.")
+                Text("Bora reads only your busy times to find when you and your friends are all free. Your event details always stay private.")
                     .font(.body)
                     .multilineTextAlignment(.center)
                     .foregroundStyle(Theme.Palette.inkSecondary)
@@ -64,7 +64,7 @@ struct ConnectCalendarView: View {
                 .buttonStyle(PrimaryButtonStyle())
 
                 if calendar.access == .denied {
-                    Text("Calendar access is off. Enable it in Settings › Samen to see your real availability.")
+                    Text("Calendar access is off. Enable it in Settings › Bora to see your real availability.")
                         .font(.footnote)
                         .multilineTextAlignment(.center)
                         .foregroundStyle(Theme.Palette.busy)
