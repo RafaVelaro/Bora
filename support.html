@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bora — Support</title>
+<style>
+  :root {
+    --ground: #FBF9F6;
+    --surface: #FFFFFF;
+    --ink: #211E1A;
+    --ink-2: #5C554E;
+    --accent: #E5602A;
+    --accent-soft: #FBE9DF;
+    --rule: #ECE6DF;
+    --shadow: 0 1px 2px rgba(33,30,26,.04), 0 8px 30px rgba(33,30,26,.05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #1A1815; --surface: #221F1B; --ink: #F3EEE8; --ink-2: #A79F97;
+      --accent: #FF7A45; --accent-soft: #38271E; --rule: #322D27;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="light"] {
+    --ground: #FBF9F6; --surface: #FFFFFF; --ink: #211E1A; --ink-2: #5C554E;
+    --accent: #E5602A; --accent-soft: #FBE9DF; --rule: #ECE6DF;
+    --shadow: 0 1px 2px rgba(33,30,26,.04), 0 8px 30px rgba(33,30,26,.05);
+  }
+  :root[data-theme="dark"] {
+    --ground: #1A1815; --surface: #221F1B; --ink: #F3EEE8; --ink-2: #A79F97;
+    --accent: #FF7A45; --accent-soft: #38271E; --rule: #322D27;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 30px rgba(0,0,0,.35);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: clamp(2rem, 5vw, 4.5rem) clamp(1.25rem, 5vw, 2rem) 4rem; }
+
+  header { display: flex; flex-direction: column; gap: .9rem; padding-bottom: 1.75rem; border-bottom: 1px solid var(--rule); }
+  .mark { display: inline-flex; align-items: center; gap: .6rem; font-weight: 700; font-size: 1.05rem; letter-spacing: -.01em; }
+  .dot { width: 1.6rem; height: 1.6rem; border-radius: 999px; background: var(--accent);
+         display: grid; place-items: center; color: #fff; font-size: .95rem; box-shadow: var(--shadow); }
+  h1 { font-size: clamp(1.9rem, 5vw, 2.6rem); line-height: 1.1; letter-spacing: -.025em; margin: .4rem 0 0; text-wrap: balance; }
+  .lead { color: var(--ink-2); font-size: 1.08rem; margin: 1.4rem 0 0; }
+
+  .contact { margin-top: 1.6rem; background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+             border-radius: 14px; padding: 1.2rem 1.3rem; }
+  .contact .label { text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; font-weight: 700; color: var(--accent); }
+  .contact a { color: var(--accent); font-weight: 650; font-size: 1.15rem; text-decoration: none; }
+  .contact p { margin: .35rem 0 0; color: var(--ink-2); font-size: .95rem; }
+
+  section { margin-top: 2.6rem; }
+  .eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; font-weight: 700; color: var(--accent); }
+  h2 { font-size: 1.3rem; letter-spacing: -.015em; margin: .35rem 0 1rem; }
+
+  .faq { display: flex; flex-direction: column; gap: .8rem; }
+  details { background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 0 1.3rem; box-shadow: var(--shadow); overflow: hidden; }
+  summary { cursor: pointer; list-style: none; padding: 1.05rem 0; font-weight: 600; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; color: var(--accent); font-size: 1.4rem; line-height: 1; font-weight: 400; }
+  details[open] summary::after { content: "\2013"; }
+  details > p { margin: 0 0 1.1rem; color: var(--ink-2); }
+  details a { color: var(--accent); }
+
+  footer { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); color: var(--ink-2); font-size: .9rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="mark"><span class="dot">◑</span> Bora</span>
+    <h1>Support &amp; Help</h1>
+    <p class="lead">Bora helps you and your friends see when you're all free and plan get-togethers. Have a question, hit a snag, or want to share feedback? We're happy to help.</p>
+    <div class="contact">
+      <div class="label">Contact us</div>
+      <a href="mailto:rafael@velaroagency.com">rafael@velaroagency.com</a>
+      <p>We usually reply within 1–2 business days. Please include your device model and iOS version so we can help faster.</p>
+    </div>
+  </header>
+
+  <section>
+    <span class="eyebrow">Common questions</span>
+    <h2>Frequently asked</h2>
+    <div class="faq">
+      <details>
+        <summary>How do I see when my friends are free?</summary>
+        <p>Add friends with an invite code (Friends tab), mark the days you're available on the Availability tab, then open Find Time and pick who you want to meet — Bora shows the windows when you're all free.</p>
+      </details>
+      <details>
+        <summary>How do I connect my calendar?</summary>
+        <p>Open the account menu (person icon in Friends) → Settings. You can connect Apple Calendar and Google Calendar separately — turn on either, both, or neither. Bora reads only your busy/free times to pre-fill your availability, never your event details.</p>
+      </details>
+      <details>
+        <summary>How does the AI spot suggestion work?</summary>
+        <p>When you create a plan, tap "Need ideas?" (or "Find the perfect spot"), enter the city and any preferences, and Bora suggests venues that fit your group — each with quick links to Google Maps and Instagram.</p>
+      </details>
+      <details>
+        <summary>How do I split the bill?</summary>
+        <p>Open a plan, enter the total, and choose who's chipping in. Bora shows the per-person amount and can create an iDEAL payment link (via Mollie) you can share — friends pay from their own bank, no app required.</p>
+      </details>
+      <details>
+        <summary>How do I delete my account?</summary>
+        <p>Go to the person icon in the Friends tab → Settings → Delete Account. This permanently removes your account and all your data, immediately and irreversibly.</p>
+      </details>
+      <details>
+        <summary>Is my data private?</summary>
+        <p>Yes. Bora reads only busy/free times — never event titles, locations, or guests — and we never sell your data or show ads. See our <a href="privacy-policy.html">Privacy Policy</a> for the full details.</p>
+      </details>
+    </div>
+  </section>
+
+  <footer>
+    <p>Still stuck? Email <a href="mailto:rafael@velaroagency.com">rafael@velaroagency.com</a> and we'll sort it out.</p>
+    <p>Bora — plan time together, not in the group chat.</p>
+  </footer>
+</div>
+</body>
+</html>
