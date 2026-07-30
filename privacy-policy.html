@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bora — Privacy Policy</title>
+<style>
+  :root {
+    --ground: #FBF9F6;
+    --surface: #FFFFFF;
+    --ink: #211E1A;
+    --ink-2: #5C554E;
+    --accent: #E5602A;
+    --accent-soft: #FBE9DF;
+    --rule: #ECE6DF;
+    --shadow: 0 1px 2px rgba(33,30,26,.04), 0 8px 30px rgba(33,30,26,.05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #1A1815;
+      --surface: #221F1B;
+      --ink: #F3EEE8;
+      --ink-2: #A79F97;
+      --accent: #FF7A45;
+      --accent-soft: #38271E;
+      --rule: #322D27;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="light"] {
+    --ground: #FBF9F6; --surface: #FFFFFF; --ink: #211E1A; --ink-2: #5C554E;
+    --accent: #E5602A; --accent-soft: #FBE9DF; --rule: #ECE6DF;
+    --shadow: 0 1px 2px rgba(33,30,26,.04), 0 8px 30px rgba(33,30,26,.05);
+  }
+  :root[data-theme="dark"] {
+    --ground: #1A1815; --surface: #221F1B; --ink: #F3EEE8; --ink-2: #A79F97;
+    --accent: #FF7A45; --accent-soft: #38271E; --rule: #322D27;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 30px rgba(0,0,0,.35);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: clamp(2rem, 5vw, 4.5rem) clamp(1.25rem, 5vw, 2rem) 4rem; }
+
+  header { display: flex; flex-direction: column; gap: .9rem; padding-bottom: 1.75rem; border-bottom: 1px solid var(--rule); }
+  .mark { display: inline-flex; align-items: center; gap: .6rem; font-weight: 700; font-size: 1.05rem; letter-spacing: -.01em; }
+  .dot { width: 1.6rem; height: 1.6rem; border-radius: 999px; background: var(--accent);
+         display: grid; place-items: center; color: #fff; font-size: .95rem; box-shadow: var(--shadow); }
+  h1 { font-size: clamp(1.9rem, 5vw, 2.6rem); line-height: 1.1; letter-spacing: -.025em; margin: .4rem 0 0; text-wrap: balance; }
+  .meta { color: var(--ink-2); font-size: .9rem; }
+  .lead { color: var(--ink-2); font-size: 1.08rem; margin: 1.6rem 0 0; }
+
+  .pledge { margin-top: 1.6rem; background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+            border-radius: 14px; padding: 1.1rem 1.25rem; color: var(--ink); font-size: .98rem; }
+  .pledge strong { color: var(--accent); }
+
+  section { margin-top: 2.6rem; }
+  .eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: .72rem; font-weight: 700; color: var(--accent); }
+  h2 { font-size: 1.3rem; letter-spacing: -.015em; margin: .35rem 0 .6rem; }
+  p { margin: .7rem 0; }
+  a { color: var(--accent); text-underline-offset: 2px; }
+
+  ul { margin: .7rem 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: .7rem; }
+  li { position: relative; padding-left: 1.5rem; }
+  li::before { content: ""; position: absolute; left: .1rem; top: .62em; width: .42rem; height: .42rem;
+               border-radius: 999px; background: var(--accent); }
+  li b { font-weight: 650; }
+
+  .card { background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 1.15rem 1.3rem; box-shadow: var(--shadow); }
+  .card + .card { margin-top: .8rem; }
+  .card h3 { margin: 0 0 .15rem; font-size: 1rem; }
+  .card p { margin: 0; color: var(--ink-2); font-size: .95rem; }
+
+  footer { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); color: var(--ink-2); font-size: .9rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="mark"><span class="dot">◑</span> Bora</span>
+    <h1>Privacy Policy</h1>
+    <span class="meta">Last updated 23 July 2026</span>
+    <p class="lead">Bora helps you and your friends see when you're all free and plan get-togethers. This policy explains, in plain language, what we collect, why, and the control you have over it.</p>
+    <div class="pledge"><strong>The short version:</strong> Bora reads only your <em>busy/free times</em> — never your event titles, locations, or guests. We don't sell your data, we don't show ads, and you can delete your account and everything in it at any time.</div>
+  </header>
+
+  <section>
+    <span class="eyebrow">What we collect</span>
+    <h2>Information you give us</h2>
+    <ul>
+      <li><b>Account —</b> your email address, used to sign you in and secure your account.</li>
+      <li><b>Profile —</b> a display name, and an optional profile photo. Your profile photo is stored <b>only on your device</b> and is never uploaded to our servers.</li>
+      <li><b>Availability &amp; plans —</b> the free-time windows you set, the plans you create (title, time, and category), and the friends you connect with in the app.</li>
+    </ul>
+  </section>
+
+  <section>
+    <span class="eyebrow">Calendars</span>
+    <h2>If you connect a calendar</h2>
+    <p>Connecting your Apple or Google calendar is optional and off until you turn it on. When you do, Bora reads only your <b>busy and free times</b> to help pre-fill your availability. It never reads or stores the titles, locations, guests, or notes of your events.</p>
+    <ul>
+      <li><b>Apple Calendar —</b> read on your device through iOS. Nothing about your events leaves your phone except the availability windows you choose to share with your friends.</li>
+      <li><b>Google Calendar —</b> connected through Google's secure sign-in. Bora requests only the "free/busy" permission, and your Google access can be revoked at any time in Bora's Settings or your Google account.</li>
+    </ul>
+  </section>
+
+  <section>
+    <span class="eyebrow">Who we share with</span>
+    <h2>Services that help run Bora</h2>
+    <p>We use a small number of trusted providers to operate the app. We share only what each one needs to do its job.</p>
+    <div class="card"><h3>Supabase</h3><p>Hosts our database and handles sign-in. Stores your account, availability, plans, and friend connections.</p></div>
+    <div class="card"><h3>Anthropic</h3><p>Powers the AI place suggestions. When you ask for ideas, the city and any preferences you type are sent to generate recommendations.</p></div>
+    <div class="card"><h3>Mollie</h3><p>Creates the payment links for splitting a bill. Only the amount and a short description are sent — Bora never sees or stores card or bank details.</p></div>
+    <div class="card"><h3>Google</h3><p>Only if you connect Google Calendar, and only for free/busy access as described above.</p></div>
+  </section>
+
+  <section>
+    <span class="eyebrow">Your control</span>
+    <h2>Keeping and deleting your data</h2>
+    <p>You can delete your account at any time from <b>Settings → Delete Account</b> inside the app. This permanently removes your account, availability, plans, and friend connections from our servers — immediately and irreversibly.</p>
+    <p>Under the GDPR you also have the right to access, correct, or export your personal data. Email us and we'll help.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">Security &amp; scope</span>
+    <h2>How we protect it</h2>
+    <ul>
+      <li>Data is encrypted in transit between the app and our servers.</li>
+      <li>Any calendar access tokens are stored securely in your device's Keychain, not on our servers.</li>
+      <li>Bora is not directed to children under 16. If you believe a child has created an account, contact us and we'll remove it.</li>
+    </ul>
+  </section>
+
+  <section>
+    <span class="eyebrow">Changes</span>
+    <h2>Updates to this policy</h2>
+    <p>If we make meaningful changes, we'll update the date above and, where appropriate, let you know in the app. Continued use of Bora after an update means you accept the revised policy.</p>
+  </section>
+
+  <footer>
+    <p>Questions about your privacy? Contact us at <a href="mailto:rafael@velaroagency.com">rafael@velaroagency.com</a>.</p>
+    <p>Bora — plan time together, not in the group chat.</p>
+  </footer>
+</div>
+</body>
+</html>
